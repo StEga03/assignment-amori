@@ -9,12 +9,13 @@ type Channel struct {
 	generic.MetaInfo
 }
 
-type ChannelUCRequest struct {
+type NewChannelUCRequest struct {
 	Name          string                   `json:"name"`
 	MessageSource []MessageSourceUCRequest `json:"messageSource"`
 }
 
-type ChannelParams struct {
+type NewChannelParams struct {
+	ID     uint64 `json:"id"`
 	UserID uint64 `json:"userId"`
 	Name   string `json:"name"`
 }

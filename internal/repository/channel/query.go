@@ -13,6 +13,7 @@ const (
 									updated_at
 								FROM ` + tableDefChannels
 
-	querySelectChannelByID     = querySelectChannelsClause + ` WHERE id = $1`
-	querySelectChannelByUserID = querySelectChannelsClause + ` WHERE user_id = $1`
+	querySelectChannelByID          = querySelectChannelsClause + ` WHERE id = $1`
+	querySelectChannelByUserID      = querySelectChannelsClause + ` WHERE user_id = $1`
+	querySelectChannelByIDAndUserID = querySelectChannelsClause + ` WHERE id = $1 AND user_id = $2`
 )

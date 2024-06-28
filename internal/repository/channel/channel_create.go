@@ -10,11 +10,10 @@ import (
 	timeutils "github.com/assignment-amori/pkg/time_utils"
 )
 
-func (r *Repository) CreateChannel(ctx context.Context, param entity.ChannelParams, cel *consistency.ConsistencyElement) (uint64, error) {
+func (r *Repository) CreateChannel(ctx context.Context, param entity.NewChannelParams, cel *consistency.ConsistencyElement) (uint64, error) {
 	var (
-		channelId uint64
-		tx        *pgx.Tx
-		err       error
+		tx  *pgx.Tx
+		err error
 
 		now = timeutils.Now()
 	)
@@ -23,15 +22,10 @@ func (r *Repository) CreateChannel(ctx context.Context, param entity.ChannelPara
 		tx = cel.Txn
 	}
 
-	channelId, err = r.sf.NextID()
-	if err != nil {
-		return channelId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
-	}
-
 	err = r.db.ExecuteInTx(ctx, tx, func(tx *pgx.Tx) error {
 		// Insert Channel.
 		channel := channelTable{
-			ID:        channelId,
+			ID:        param.ID,
 			UserID:    param.UserID,
 			Name:      param.Name,
 			CreatedAt: now,
@@ -46,10 +40,10 @@ func (r *Repository) CreateChannel(ctx context.Context, param entity.ChannelPara
 		return nil
 	})
 	if err != nil {
-		return channelId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoChannel)
+		return param.ID, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoChannel)
 	}
 
-	return channelId, nil
+	return param.ID, nil
 }
 
 /*

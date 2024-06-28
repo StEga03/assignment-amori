@@ -1,5 +1,7 @@
 package http
 
-func New() *Handler {
-	return &Handler{}
+func New(ChannelUC ChannelUsecase) *Handler {
+	return &Handler{
+		ChannelUC: ChannelUC,
+	}
 }

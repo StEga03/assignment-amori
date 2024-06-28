@@ -17,7 +17,6 @@ CREATE TABLE users (
     "updated_at" TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 CREATE UNIQUE INDEX ON "users" ("phone_number");
-CREATE INDEX ON "users" ("deleted_at");
 CREATE INDEX ON "users" ("created_at");
 
 

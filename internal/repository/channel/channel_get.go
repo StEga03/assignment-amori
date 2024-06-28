@@ -46,3 +46,23 @@ func (r *Repository) GetByUserID(ctx context.Context, userId string) ([]entity.C
 
 	return result, nil
 }
+
+func (r *Repository) GetByIDAndUserID(ctx context.Context, id, userId uint64) (entity.Channel, error) {
+	var (
+		result entity.Channel
+		err    error
+	)
+
+	resultTable := channelTable{}
+	_, err = r.db.Select(ctx, &resultTable, querySelectChannelByIDAndUserID, id, userId)
+	if err != nil {
+		return result, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedGetFromRepoChannel)
+	}
+
+	result = resultTable.ToEntity()
+	if result.ID == constant.DefaultUInt64 {
+		return result, errorwrapper.New(errorwrapper.ErrIDChannelDataIsEmpty)
+	}
+
+	return result, nil
+}

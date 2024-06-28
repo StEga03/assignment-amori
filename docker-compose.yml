@@ -12,19 +12,19 @@ services:
     volumes:
       - ./schema/:/docker-entrypoint-initdb.d/
 
-#  assignment-amori:
-#    build:
-#      context: . # Use an image built from the specified dockerfile in the current directory.
-#      dockerfile: Dockerfile
-#    ports:
-#      - "9000:9000" # Port for finanxier-api-http
-#    environment:
-#      - PORT_HTTP=9000
-#      - DSN=postgres://postgres:postgres@postgres:5432/assignment-amori?sslmode=disable
-#    depends_on:
-#      postgres:
-#        condition: service_started
-#    restart: always
-#    extra_hosts:
-#      - "localhost:host-gateway" # Used for connecting with other services from host localhost
+  assignment-amori:
+    build:
+      context: . # Use an image built from the specified dockerfile in the current directory.
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000" # Port for finanxier-api-http
+    environment:
+      - PORT_HTTP=9000
+      - DSN=postgres://postgres:postgres@postgres:5432/assignment-amori?sslmode=disable
+    depends_on:
+      postgres:
+        condition: service_started
+    restart: always
+    extra_hosts:
+      - "localhost:host-gateway" # Used for connecting with other services from host localhost
 

@@ -4,5 +4,5 @@ type Module string
 
 const (
 	ModuleChannels Module = "channels"
-	ModuleUploads  Module = "uploads"
+	ModuleFiles    Module = "files"
 )

@@ -11,24 +11,18 @@ import (
 
 func (r *Repository) CreateMessage(ctx context.Context, param entity.NewMessageParams, cel *consistency.ConsistencyElement) (uint64, error) {
 	var (
-		messageId uint64
-		tx        *pgx.Tx
-		err       error
+		tx  *pgx.Tx
+		err error
 	)
 
 	if cel != nil {
 		tx = cel.Txn
 	}
 
-	messageId, err = r.sf.NextID()
-	if err != nil {
-		return messageId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
-	}
-
 	err = r.db.ExecuteInTx(ctx, tx, func(tx *pgx.Tx) error {
 		// Insert Message.
 		message := messageTable{
-			ID:          messageId,
+			ID:          param.ID,
 			ChannelID:   param.ChannelID,
 			SenderType:  param.SenderType,
 			SenderID:    param.SenderID,
@@ -46,10 +40,10 @@ func (r *Repository) CreateMessage(ctx context.Context, param entity.NewMessageP
 		return nil
 	})
 	if err != nil {
-		return messageId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoMessage)
+		return param.ID, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoMessage)
 	}
 
-	return messageId, nil
+	return param.ID, nil
 }
 
 func (r *Repository) CreateMessageBulk(ctx context.Context, param []entity.NewMessageParams, cel *consistency.ConsistencyElement) error {
