@@ -32,8 +32,9 @@ type sonyFlakeResource interface {
 }
 
 type Repository struct {
-	db databaseResource
-	sf sonyFlakeResource
+	db          databaseResource
+	sf          sonyFlakeResource
+	jwtSetupKey string
 }
 
 type userTable struct {
