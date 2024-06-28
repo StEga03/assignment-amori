@@ -1,0 +1,38 @@
+{
+  "get": "mendapatkan",
+  "insert": "memasukkan",
+  "update": "mengubah",
+  "delete": "menghapus",
+  "upsert": "menyisipkan/memperbarui",
+  "parse": "mengurai",
+  "marshal": "membentuk",
+  "unmarshal": "mengurai",
+  "decode": "mengurai",
+  "process": "memproses",
+  "find": "menemukan",
+  "initialize": "menginisialisasi",
+  "rollback": "mengembalikan",
+  "lock": "mengunci",
+  "create": "membuat",
+  "decrypt": "dekripsi",
+  "encrypt": "enkripsi",
+
+  "required": "dibutuhkan",
+  "missing": "hilang",
+  "empty": "kosong",
+  "invalid": "tidak valid",
+  "incorrect": "salah",
+  "not found": "tidak ditemukan",
+  "unfinished": "belum selesai",
+
+  "greater than": "lebih besar dari",
+  "less than": "lebih kurang dari",
+  "equal to": "sama dengan",
+  "between": "di antara",
+
+  "second": "detik",
+  "seconds": "detik",
+
+  "context cancelled": "konteks dibatalkan",
+  "process time is longer than expected": "Lama pemrosesan lebih dari batas waktu yang telah ditentukan"
+}

@@ -1,0 +1,27 @@
+{
+    "detail": {
+        "code_prefix": "13"
+    },
+    "errors": {
+        "sheets_client_not_initilized": {
+            "code": 1,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "field_single_operator_validation",
+            "user_message_default_param": {
+                "DataOperator": "missing",
+                "DataName": "Sheets client"
+            }
+        },
+        "storage_client_not_initilized": {
+            "code": 2,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "field_single_operator_validation",
+            "user_message_default_param": {
+                "DataOperator": "missing",
+                "DataName": "Storage client"
+            }
+        }
+    }
+}

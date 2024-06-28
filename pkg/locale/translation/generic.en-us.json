@@ -1,0 +1,24 @@
+{
+  "generic_success": "Your request processed successfully.",
+
+  "validator_default": "'{{.Field}}' field is not valid",
+  "validator_required": "'{{.Field}}' field is required",
+  "validator_min": "'{{.Field}}' must be longer than {{.Param}}",
+  "validator_max": "'{{.Field}}' must be shorter than {{.Param}}",
+  "validator_latitude": "'{{.Field}}' must be valid latitude value",
+  "validator_longitude": "'{{.Field}}' must be valid longitude value",
+  "validator_alpha": "'{{.Field}}' must be valid alphabet value",
+  "validator_numeric": "'{{.Field}}' must be valid numeric value",
+  "rule_validator_default": "'{{.Field}}' field is not valid: {{.Reason}}",
+
+  "unauthorized": "You do not have permission to perform this action by using the credentials that you supplied.",
+  "unknown_error": "Sorry, your request failed to be processed. Please try again.",
+
+  "failed_data_operation": "Failed to {{.DataOperator}} {{.DataName}} data.",
+  "field_single_operator_validation": "{{.Field}} is {{.SingleOperator}}.",
+  "field_double_operator_validation": "{{.Field}} must be {{.DoubleOperator}} {{.Comparator}} {{.ComparatorUnit}}.",
+  "field_exist_validation": "{{.Field}} already exists.",
+  "failed_change_state": "Invalid state to {{.TargetState}}.",
+  "invalid_param_validation": "Invalid {{.Usecase}} param.",
+  "timeout_error": "Timeout: {{.Reason}}."
+}

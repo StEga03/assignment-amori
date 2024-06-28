@@ -1,0 +1,8 @@
+{
+  "hello_world": "Hello World",
+  "test_message": {
+    "description": "The number of messages a person has",
+    "one": "{{or .Name \"\"}} has {{or .Count 0}} message.",
+    "other": "{{or .Name \"\"}} has {{or .Count 0}} messages."
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "detail": {
+        "code_prefix": "47"
+    },
+    "errors": {
+        "service_expected_error": {
+            "code": 1,
+            "http_status": 400,
+            "retryable": false,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "call",
+                "DataName": "service"
+            }
+        },
+        "service_unexpected_error": {
+            "code": 2,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "call",
+                "DataName": "service"
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "detail": {
+        "code_prefix": "11"
+    },
+    "errors": {
+        "file_extension_not_valid": {
+            "code": 1,
+            "http_status": 415,
+            "retryable": false,
+            "user_message_translation_id": "field_single_operator_validation",
+            "user_message_default_param": {
+                "Field": "Extension",
+                "SingleOperator": "invalid"
+            }
+        },
+        "failed_to_read_file": {
+            "code": 2,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "process",
+                "DataName": "file"
+            }
+        },
+        "failed_to_upload": {
+            "code": 3,
+            "http_status": 415,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "process",
+                "DataName": "file"
+            }
+        },
+        "failed_to_download": {
+            "code": 4,
+            "http_status": 415,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "get",
+                "DataName": "file"
+            }
+        },
+        "file_is_not_exist": {
+            "code": 5,
+            "http_status": 422,
+            "retryable": false,
+            "user_message_translation_id": "field_single_operator_validation",
+            "user_message_default_param": {
+                "DataOperator": "find",
+                "DataName": "file"
+            }
+        }
+    }
+}

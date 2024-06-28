@@ -1,0 +1,37 @@
+{
+    "detail": {
+        "code_prefix": "21"
+    },
+    "errors": {
+        "failed_to_begin": {
+            "code": 1,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "initialize",
+                "DataName": "database"
+            }
+        },
+        "failed_to_commit": {
+            "code": 2,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "insert",
+                "DataName": "database transaction"
+            }
+        },
+        "failed_to_rollback": {
+            "code": 3,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "rollback",
+                "DataName": "database transaction"
+            }
+        }
+    }
+}
