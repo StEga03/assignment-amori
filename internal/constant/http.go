@@ -19,8 +19,8 @@ const (
 	HTTPHandlerIDChannelMessageCreate HandlerID = "channel-message-create"
 	HTTPHandlerIDChannelMessageGet    HandlerID = "channel-message-get"
 
-	// Uploads HandlerID.
-	HTTPHandlerIDUploadMessageSource HandlerID = "upload-message-source"
+	// Files HandlerID.
+	HTTPHandlerIDFilesMessageSource HandlerID = "file-source"
 )
 
 // HTTP Header.

@@ -6,23 +6,27 @@ import (
 	"log"
 	"log/slog"
 	"net/http"
+	"time"
 
 	"github.com/assignment-amori/cmd/helper"
 	"github.com/assignment-amori/internal/constant"
 	"github.com/assignment-amori/internal/entity"
 	channelHdlr "github.com/assignment-amori/internal/handler/channel/http"
-	uploadHdlr "github.com/assignment-amori/internal/handler/upload/http"
+	fileHdlr "github.com/assignment-amori/internal/handler/file/http"
 	channelRepository "github.com/assignment-amori/internal/repository/channel"
 	messageRepository "github.com/assignment-amori/internal/repository/message"
 	openaiRepository "github.com/assignment-amori/internal/repository/openai"
 	userRepository "github.com/assignment-amori/internal/repository/user"
 	openaiService "github.com/assignment-amori/internal/service/openai"
+	channelUsecase "github.com/assignment-amori/internal/usecase/channel"
+	fileUsecase "github.com/assignment-amori/internal/usecase/file"
 	handhelp "github.com/assignment-amori/middleware/http"
 	"github.com/assignment-amori/pkg/consistency/enforcer"
 	"github.com/assignment-amori/pkg/errorwrapper"
 	"github.com/assignment-amori/pkg/sql/pgx"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/go-chi/httprate"
 	"github.com/joho/godotenv"
 	"github.com/rs/cors"
 )
@@ -61,7 +65,7 @@ func startApp(ctx context.Context, genericMod *helper.GenericModulesResult) erro
 	}
 	defer db.Close()
 
-	_ = enforcer.New(db)
+	consistency := enforcer.New(db)
 
 	//------------------------------------------------------
 	slog.Info("Start Initializing Service")
@@ -90,15 +94,28 @@ func startApp(ctx context.Context, genericMod *helper.GenericModulesResult) erro
 	slog.Info("Start Initializing Usecase")
 	//------------------------------------------------------
 
+	// Channel UC.
+	channelUC := channelUsecase.New(
+		consistency,
+		channelRepo,
+		messageRepo,
+		openaiRepo,
+		userRepo,
+		genericMod.SonyFlake,
+	)
+
+	// File UC.
+	fileUC := fileUsecase.New()
+
 	//------------------------------------------------------
 	slog.Info("Start Initializing Handler")
 	//------------------------------------------------------
 
 	// Channel Handler.
-	channelHandler := channelHdlr.New()
+	channelHandler := channelHdlr.New(channelUC)
 
 	// Upload Handler.
-	uploadHandler := uploadHdlr.New()
+	uploadHandler := fileHdlr.New(fileUC)
 
 	slog.Info("Creating endpoint route")
 	router := newRoutes(
@@ -114,7 +131,7 @@ func startApp(ctx context.Context, genericMod *helper.GenericModulesResult) erro
 func newRoutes(
 	appConfig entity.AppConfig,
 	channelHandler *channelHdlr.Handler,
-	uploadHandler *uploadHdlr.Handler,
+	fileHandler *fileHdlr.Handler,
 ) *chi.Mux {
 	router := chi.NewRouter()
 	helperModule := handhelp.New(
@@ -136,6 +153,7 @@ func newRoutes(
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 	router.Use(middleware.URLFormat)
+	router.Use(httprate.LimitByIP(100, 1*time.Minute))
 
 	router.Route("/api", func(r chi.Router) {
 
@@ -144,7 +162,7 @@ func newRoutes(
 
 			r.Group(func(r chi.Router) {
 				r.Mount(helper.GenModulePattern(constant.ModuleChannels), channelHandler.Routes(helperModule))
-				r.Mount(helper.GenModulePattern(constant.ModuleUploads), uploadHandler.Routes(helperModule))
+				r.Mount(helper.GenModulePattern(constant.ModuleFiles), fileHandler.Routes(helperModule))
 			})
 		})
 	})

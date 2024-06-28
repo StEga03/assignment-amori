@@ -14,3 +14,11 @@ type ErrorDetail struct {
 	Path string `json:"path"`
 	Info string `json:"info"`
 }
+
+type FileDetails struct {
+	OriginalFileName string
+	FilePath         string
+	Extension        string
+	Size             int64
+	Header           map[string][]string
+}

@@ -7,35 +7,32 @@ import (
 	"github.com/assignment-amori/pkg/consistency"
 	"github.com/assignment-amori/pkg/errorwrapper"
 	"github.com/assignment-amori/pkg/sql/pgx"
+	timeutils "github.com/assignment-amori/pkg/time_utils"
 )
 
 func (r *Repository) CreateMessageInput(ctx context.Context, param entity.NewMessageInputParams, cel *consistency.ConsistencyElement) (uint64, error) {
 	var (
-		messageInputId uint64
-		tx             *pgx.Tx
-		err            error
+		tx  *pgx.Tx
+		err error
+
+		now = timeutils.Now()
 	)
 
 	if cel != nil {
 		tx = cel.Txn
 	}
 
-	messageInputId, err = r.sf.NextID()
-	if err != nil {
-		return messageInputId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
-	}
-
 	err = r.db.ExecuteInTx(ctx, tx, func(tx *pgx.Tx) error {
 		// Insert Message Input.
 		messageInput := messageInputTable{
-			ID:              messageInputId,
+			ID:              param.ID,
 			ChannelID:       param.ChannelID,
 			Source:          param.Source,
 			Sender:          param.Sender,
 			Receiver:        param.Receiver,
 			ReceiverPronoun: param.ReceiverPronoun,
-			CreatedAt:       param.CreatedAt,
-			UpdatedAt:       param.CreatedAt,
+			CreatedAt:       now,
+			UpdatedAt:       now,
 		}
 
 		err := r.insertMessageInput(ctx, tx, messageInput)
@@ -46,10 +43,10 @@ func (r *Repository) CreateMessageInput(ctx context.Context, param entity.NewMes
 		return nil
 	})
 	if err != nil {
-		return messageInputId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoMessageInput)
+		return param.ID, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoMessageInput)
 	}
 
-	return messageInputId, nil
+	return param.ID, nil
 }
 
 /*

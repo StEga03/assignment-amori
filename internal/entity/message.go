@@ -37,13 +37,14 @@ type MessageSource struct {
 }
 
 type MessageUCRequest struct {
-	Body string `json:"body"`
+	ChannelID uint64 `json:"channelId" validate:"required"`
+	Body      string `json:"body"`
 }
 
 type MessageSourceUCRequest struct {
-	Body   string    `json:"body"`
-	Sender string    `json:"sender"`
-	SentAt time.Time `json:"sentAt"`
+	Body   string `json:"body"`
+	Sender string `json:"sender"`
+	SentAt string `json:"sentAt"`
 }
 
 type MessageResponse struct {
@@ -54,6 +55,7 @@ type MessageResponse struct {
 }
 
 type NewMessageParams struct {
+	ID          uint64 `json:"id"`
 	ChannelID   uint64 `json:"channelId"`
 	SenderType  string `json:"senderType"`
 	SenderID    uint64 `json:"senderId"`
@@ -63,12 +65,12 @@ type NewMessageParams struct {
 }
 
 type NewMessageInputParams struct {
+	ID              uint64 `json:"id"`
 	ChannelID       uint64 `json:"channelId"`
 	Source          string `json:"source"`
 	Sender          string `json:"sender"`
 	Receiver        string `json:"receiver"`
 	ReceiverPronoun string `json:"receiverPronoun"`
-	generic.MetaInfo
 }
 
 type NewMessageSourceParams struct {
@@ -77,7 +79,6 @@ type NewMessageSourceParams struct {
 	ContentType    string    `json:"contentType"`
 	Content        string    `json:"content"`
 	SentAt         time.Time `json:"sentAt"`
-	generic.MetaInfo
 }
 
 type GetMessageParams struct {

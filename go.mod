@@ -4,6 +4,7 @@ go 1.21
 
 require (
 	github.com/go-chi/chi/v5 v5.0.14
+	github.com/go-chi/httprate v0.9.0
 	github.com/go-chi/render v1.0.3
 	github.com/go-playground/validator/v10 v10.22.0
 	github.com/goccy/go-json v0.10.3
@@ -11,6 +12,7 @@ require (
 	github.com/jackc/pgx/v5 v5.6.0
 	github.com/joho/godotenv v1.5.1
 	github.com/nicksnyder/go-i18n/v2 v2.4.0
+	github.com/otiai10/copy v1.14.0
 	github.com/pkg/errors v0.9.1
 	github.com/rs/cors v1.11.0
 	github.com/sashabaranov/go-openai v1.26.1
@@ -22,6 +24,7 @@ require (
 
 require (
 	github.com/ajg/form v1.5.1 // indirect
+	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect

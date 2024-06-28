@@ -7,10 +7,10 @@ import (
 
 func (u *Handler) Routes(hm helperModule) chi.Router {
 	r := chi.NewRouter()
-	r.Use(hm.APIModule(constant.ModuleUploads))
+	r.Use(hm.APIModule(constant.ModuleFiles))
 
-	r.Post("/messages/sources/{sourceType}", hm.HandleHTTP(
-		constant.HTTPHandlerIDUploadMessageSource,
+	r.Post("/sources/{sourceType}", hm.HandleHTTP(
+		constant.HTTPHandlerIDFilesMessageSource,
 		constant.HTTPDefaultResponseWriter,
 		u.UploadMessageSource,
 	))

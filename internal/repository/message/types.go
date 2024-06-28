@@ -58,7 +58,7 @@ type messageInputTable struct {
 }
 
 type messageSourceTable struct {
-	ID             uint64    `db:"id" table:"messages_sources"`
+	ID             uint64    `db:"id" table:"message_sources"`
 	MessageInputID uint64    `db:"message_input_id"`
 	Sender         string    `db:"sender"`
 	ContentType    string    `db:"content_type"`

@@ -7,49 +7,53 @@ import (
 	"github.com/assignment-amori/pkg/consistency"
 	"github.com/assignment-amori/pkg/errorwrapper"
 	"github.com/assignment-amori/pkg/sql/pgx"
+	timeutils "github.com/assignment-amori/pkg/time_utils"
 )
 
-func (r *Repository) CreateMessageSource(ctx context.Context, param entity.NewMessageSourceParams, cel *consistency.ConsistencyElement) (uint64, error) {
+func (r *Repository) CreateMessageSource(ctx context.Context, param []entity.NewMessageSourceParams, cel *consistency.ConsistencyElement) error {
 	var (
-		messageInputId uint64
-		tx             *pgx.Tx
-		err            error
+		tx  *pgx.Tx
+		err error
+
+		now = timeutils.Now()
 	)
 
 	if cel != nil {
 		tx = cel.Txn
 	}
 
-	messageInputId, err = r.sf.NextID()
-	if err != nil {
-		return messageInputId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
-	}
-
 	err = r.db.ExecuteInTx(ctx, tx, func(tx *pgx.Tx) error {
 		// Insert Message Source.
-		messageSource := messageSourceTable{
-			ID:             messageInputId,
-			MessageInputID: param.MessageInputID,
-			Sender:         param.Sender,
-			ContentType:    param.ContentType,
-			Content:        param.Content,
-			SentAt:         param.SentAt,
-			CreatedAt:      param.CreatedAt,
-			UpdatedAt:      param.CreatedAt,
-		}
+		for _, req := range param {
+			id, err := r.sf.NextID()
+			if err != nil {
+				return errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
+			}
 
-		err := r.insertMessageSource(ctx, tx, messageSource)
-		if err != nil {
-			return err
+			messageSource := messageSourceTable{
+				ID:             id,
+				MessageInputID: req.MessageInputID,
+				Sender:         req.Sender,
+				ContentType:    req.ContentType,
+				Content:        req.Content,
+				SentAt:         req.SentAt,
+				CreatedAt:      now,
+				UpdatedAt:      now,
+			}
+
+			err = r.insertMessageSource(ctx, tx, messageSource)
+			if err != nil {
+				return err
+			}
 		}
 
 		return nil
 	})
 	if err != nil {
-		return messageInputId, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoMessageSource)
+		return errorwrapper.Wrap(err, errorwrapper.ErrIDFailedCreateFromRepoMessageSource)
 	}
 
-	return messageInputId, nil
+	return nil
 }
 
 /*
