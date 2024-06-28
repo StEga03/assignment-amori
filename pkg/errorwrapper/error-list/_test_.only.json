@@ -1,0 +1,13 @@
+{
+  "detail": {
+    "code_prefix": "9999"
+  },
+  "errors": {
+    "test_error": {
+      "code": 1,
+      "http_status": 404,
+      "retryable": true,
+      "user_message_translation_id": "test_message"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "hello_world": "Halo Dunia",
+  "test_message": {
+    "description": "Banyaknya pesan yang seseorang miliki",
+    "one": "{{or .Name \"\"}} memiliki {{or .Count 0}} pesan.",
+    "other": "{{or .Name \"\"}} memiliki {{or .Count 0}} pesan-pesan."
+  }
+}

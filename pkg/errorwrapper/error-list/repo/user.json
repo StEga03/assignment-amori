@@ -1,0 +1,37 @@
+{
+  "detail": {
+    "code_prefix": "45"
+  },
+  "errors": {
+    "create_from_repo_user_error": {
+      "code": 1,
+      "http_status": 500,
+      "retryable": true,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "create",
+        "DataName": "user"
+      }
+    },
+    "get_from_repo_user_error": {
+      "code": 2,
+      "http_status": 500,
+      "retryable": true,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "get",
+        "DataName": "user"
+      }
+    },
+    "user_data_is_empty": {
+      "code": 3,
+      "http_status": 422,
+      "retryable": false,
+      "user_message_translation_id": "field_single_operator_validation",
+      "user_message_default_param": {
+        "Field": "user",
+        "SingleOperator": "empty"
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "detail": {
+    "code_prefix": "12"
+  },
+  "errors": {
+    "unmarshal_err": {
+      "code": 1,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "unmarshal",
+        "DataName": ""
+      }
+    },
+    "marshal_err": {
+      "code": 2,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "marshal",
+        "DataName": ""
+      }
+    },
+    "data_already_exist": {
+      "code": 3,
+      "http_status": 422,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "insert",
+        "DataName": ""
+      }
+    },
+    "data_not_found": {
+      "code": 4,
+      "http_status": 422,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "find",
+        "DataName": ""
+      }
+    },
+    "data_is_empty": {
+      "code": 5,
+      "http_status": 422,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "get",
+        "DataName": ""
+      }
+    },
+    "data_is_not_valid": {
+      "code": 6,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "invalid_param_validation",
+      "user_message_default_param": {
+        "DataOperator": "process",
+        "DataName": ""
+      }
+    },
+    "casting_err": {
+      "code": 7,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "process",
+        "DataName": ""
+      }
+    },
+    "parsing_err": {
+      "code": 8,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "parse",
+        "DataName": ""
+      }
+    },
+    "context_value_not_found": {
+      "code": 9,
+      "http_status": 500,
+      "retryable": true,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "find",
+        "DataName": ""
+      }
+    },
+    "populate_data_error": {
+      "code": 10,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "process",
+        "DataName": ""
+      }
+    },
+    "invalid_address": {
+      "code": 11,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "field_single_operator_validation",
+      "user_message_default_param": {
+        "Field": "Address",
+        "SingleOperator": "invalid"
+      }
+    },
+    "validation_not_passed": {
+      "code": 12,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "invalid_param_validation"
+    },
+    "ip_address_not_allowed": {
+      "code": 13,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "unauthorized"
+    },
+    "bad_request_error": {
+      "code": 14,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "unknown_error"
+    },
+    "status_validation_not_passed": {
+      "code": 15,
+      "http_status": 400,
+      "retryable": false,
+      "user_message_translation_id": "invalid_param_validation",
+      "user_message_default_param": {
+        "Usecase": "status"
+      }
+    },
+    "unauthorized": {
+      "code": 16,
+      "http_status": 401,
+      "retryable": false,
+      "user_message_translation_id": "unauthorized"
+    },
+    "failed_to_generate_id": {
+      "code": 17,
+      "http_status": 500,
+      "retryable": true,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "get",
+        "DataName": "id"
+      }
+    },
+    "phone_number_not_valid": {
+      "code": 18,
+      "http_status": 415,
+      "retryable": false,
+      "user_message_translation_id": "phone_number_is_invalid"
+    },
+    "empty_tx_element": {
+      "code": 19,
+      "http_status": 500,
+      "retryable": true,
+      "user_message_translation_id": "failed_data_operation",
+      "user_message_default_param": {
+        "DataOperator": "find",
+        "DataName": "db tx"
+      }
+    }
+  }
+}

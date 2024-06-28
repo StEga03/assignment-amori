@@ -1,0 +1,9 @@
+vendor
+.DS_Store
+.vscode
+.idea
+cover.out
+coverage.out
+.env
+*bin
+.envrc

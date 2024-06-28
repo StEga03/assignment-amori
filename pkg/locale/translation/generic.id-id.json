@@ -1,0 +1,23 @@
+{
+  "generic_success": "Permintaan Anda berhasil diproses.",
+
+  "validator_default": "'{{.Field}}' tidak valid",
+  "validator_required": "'{{.Field}}' diperlukan",
+  "validator_min": "'{{.Field}}' harus lebih panjang daripada {{.Param}}",
+  "validator_max": "'{{.Field}}' harus lebih pendek daripada {{.Param}}",
+  "validator_latitude": "'{{.Field}}' harus berupa nilai garis lintang yang valid",
+  "validator_longitude": "'{{.Field}}' harus berupa nilai garis bujur yang valid",
+  "validator_alpha": "'{{.Field}}' harus berupa nilai alfabet yang valid",
+  "validator_numeric": "'{{.Field}}' harus berupa nilai numerik yang valid",
+
+  "unauthorized": "Anda tidak memiliki izin untuk melakukan tindakan ini menggunakan kredensial yang Anda berikan.",
+  "unknown_error": "Maaf, Permohonan Anda tidak dapat diproses saat ini. Mohon dicoba kembali.",
+
+  "failed_data_operation": "Gagal untuk {{.DataOperator}} data {{.DataName}}.",
+  "field_single_operator_validation": "{{.Field}} {{.SingleOperator}}.",
+  "field_double_operator_validation": "{{.Field}} harus {{.DoubleOperator}} {{.Comparator}} {{.ComparatorUnit}}.",
+  "field_exist_validation": "{{.Field}} sudah ada.",
+  "failed_change_state": "Status tidak valid untuk {{.TargetState}}.",
+  "invalid_param_validation": "Param {{.Usecase}} tidak valid.",
+  "timeout_error": "Batas waktu habis: {{.Reason}}."
+}

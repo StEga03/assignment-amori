@@ -1,0 +1,9 @@
+## Server
+export PORT_HTTP=
+export MACHINE_ID=
+
+## Database
+export DB_DSN=
+
+## OpenAI
+export OPENAI_API_KEY=

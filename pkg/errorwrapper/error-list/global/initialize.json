@@ -1,0 +1,47 @@
+{
+    "detail": {
+        "code_prefix": "14"
+    },
+    "errors": {
+        "database_init": {
+            "code": 1,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "initialize",
+                "DataName": "database"
+            }
+        },
+        "redis_init": {
+            "code": 2,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "initialize",
+                "DataName": "redis"
+            }
+        },
+        "repo_init": {
+            "code": 3,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "initialize",
+                "DataName": "repo"
+            }
+        },
+        "service_init": {
+            "code": 4,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "initialize",
+                "DataName": "service"
+            }
+        }
+    }
+}

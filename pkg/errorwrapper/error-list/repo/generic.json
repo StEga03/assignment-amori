@@ -1,0 +1,106 @@
+{
+    "detail": {
+        "code_prefix": "40"
+    },
+    "errors": {
+        "get_from_service_error": {
+            "code": 1,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "get",
+                "DataName": "service"
+            }
+        },
+        "get_from_db_error": {
+            "code": 2,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "get",
+                "DataName": "db"
+            }
+        },
+        "get_from_repo_error": {
+            "code": 3,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "get",
+                "DataName": "repo"
+            }
+        },
+        "update_db_error": {
+            "code": 4,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "update",
+                "DataName": "db"
+            }
+        },
+        "insert_db_error": {
+            "code": 5,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "insert",
+                "DataName": "db"
+            }
+        },
+        "upsert_db_error": {
+            "code": 6,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "update",
+                "DataName": "db"
+            }
+        },
+        "prepare_db_error": {
+            "code": 7,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "process",
+                "DataName": "db"
+            }
+        },
+        "invalid_config_key": {
+            "code": 8,
+            "http_status": 400,
+            "retryable": false,
+            "user_message_translation_id": "invalid_param_validation",
+            "user_message_default_param": {
+                "Usecase": "config"
+            }
+        },
+        "entity_parsing_error": {
+            "code": 9,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "parse",
+                "DataName": "entity"
+            }
+        },
+        "delete_db_error": {
+            "code": 10,
+            "http_status": 500,
+            "retryable": true,
+            "user_message_translation_id": "failed_data_operation",
+            "user_message_default_param": {
+                "DataOperator": "delete",
+                "DataName": "db"
+            }
+        }
+    }
+}
