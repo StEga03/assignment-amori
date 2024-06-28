@@ -1,8 +1,9 @@
 package user
 
-func New(db databaseResource, sf sonyFlakeResource) *Repository {
+func New(db databaseResource, sf sonyFlakeResource, jwtSetupKey string) *Repository {
 	return &Repository{
-		db: db,
-		sf: sf,
+		db:          db,
+		sf:          sf,
+		jwtSetupKey: jwtSetupKey,
 	}
 }

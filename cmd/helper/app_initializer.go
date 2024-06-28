@@ -86,6 +86,9 @@ func initAppConfig() (entity.AppConfig, error) {
 		OpenAIConfig: entity.OpenAIConfig{
 			APIKey: os.Getenv("OPENAI_API_KEY"),
 		},
+		JWTConfig: entity.JWTConfig{
+			SecretKey: os.Getenv("JWT_SECRET_KEY"),
+		},
 		Database: pgx.DBConfig{
 			DSN: os.Getenv("DB_DSN"),
 		},

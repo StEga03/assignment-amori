@@ -14,9 +14,14 @@ type OpenAIConfig struct {
 	APIKey string
 }
 
+type JWTConfig struct {
+	SecretKey string
+}
+
 type AppConfig struct {
 	ServerConfig
 	OpenAIConfig
+	JWTConfig
 	Database     pgx.DBConfig
 	ErrorWrapper errorwrapper.Config
 }

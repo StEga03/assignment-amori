@@ -79,7 +79,7 @@ func startApp(ctx context.Context, genericMod *helper.GenericModulesResult) erro
 	//------------------------------------------------------
 
 	// User Repo.
-	userRepo := userRepository.New(db, genericMod.SonyFlake)
+	userRepo := userRepository.New(db, genericMod.SonyFlake, genericMod.AppConfig.JWTConfig.SecretKey)
 
 	// Channel Repo.
 	channelRepo := channelRepository.New(db, genericMod.SonyFlake)
