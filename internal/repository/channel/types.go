@@ -9,6 +9,7 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 )
 
+//go:generate mockgen -package=channel -source=types.go -destination=channel_mock_test.go
 type databaseResource interface {
 	Insert(ctx context.Context, entity interface{}) (pgconn.CommandTag, error)
 	Update(ctx context.Context, entity interface{}, options *pgx.UpdateOptions) (pgconn.CommandTag, error)

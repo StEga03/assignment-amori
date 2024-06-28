@@ -11,6 +11,7 @@ import (
 	"github.com/assignment-amori/pkg/whatsapp"
 )
 
+//go:generate mockgen -package=http -source=types.go -destination=file_http_mock_test.go
 type FileUC interface {
 	WhatsappParser(ctx context.Context, fileDetails pkgHttp.FileDetails) ([]whatsapp.Message, error)
 }

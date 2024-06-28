@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "fddf68f9-bfb7-4a86-9ae5-2ed29c3bca83",
+		"name": "Assignment-Amori",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12053329"
+	},
+	"item": [
+		{
+			"name": "Channels",
+			"item": [
+				{
+					"name": "Create Channel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test channel\",\n    \"messageSource\": [\n        {\n            \"body\": \"Hey, how was your day?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T08:00:00\"\n        },\n        {\n            \"body\": \"It was good, thanks for asking! How about yours?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T08:05:00\"\n        },\n        {\n            \"body\": \"Mine was a bit hectic, had lots of meetings.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T08:10:00\"\n        },\n        {\n            \"body\": \"That sounds exhausting. Did you get some time to relax?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T08:15:00\"\n        },\n        {\n            \"body\": \"Yeah, I did some yoga in the evening. It helped a lot.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T08:20:00\"\n        },\n        {\n            \"body\": \"Yoga sounds nice. I should try it sometime.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T08:25:00\"\n        },\n        {\n            \"body\": \"You definitely should! It’s very relaxing.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T08:30:00\"\n        },\n        {\n            \"body\": \"What poses do you recommend for beginners?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T08:35:00\"\n        },\n        {\n            \"body\": \"Start with some basic poses like Child's Pose and Downward Dog.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T08:40:00\"\n        },\n        {\n            \"body\": \"Thanks for the tips! By the way, did you get a chance to look at the project proposal?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T08:45:00\"\n        },\n        {\n            \"body\": \"Yes, I did. I think it looks great, but we might need to adjust the budget a bit.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T08:50:00\"\n        },\n        {\n            \"body\": \"I was thinking the same. We can discuss it more in the meeting tomorrow.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T08:55:00\"\n        },\n        {\n            \"body\": \"Sure, let’s finalize it then.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T09:00:00\"\n        },\n        {\n            \"body\": \"Perfect. Are you free tonight? Maybe we can grab dinner.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T09:05:00\"\n        },\n        {\n            \"body\": \"I’d love to! Where should we go?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T09:10:00\"\n        },\n        {\n            \"body\": \"How about that new Italian place downtown?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T09:15:00\"\n        },\n        {\n            \"body\": \"Sounds good! I’ll see you at 7?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T09:20:00\"\n        },\n        {\n            \"body\": \"7 it is. Looking forward to it!\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T09:25:00\"\n        },\n        {\n            \"body\": \"Hey, are you on your way?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T18:45:00\"\n        },\n        {\n            \"body\": \"Yes, just left the house. See you in 15 minutes!\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T18:50:00\"\n        },\n        {\n            \"body\": \"Great, I’m almost there too.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T18:55:00\"\n        },\n        {\n            \"body\": \"I got us a table near the window. Perfect view!\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T19:10:00\"\n        },\n        {\n            \"body\": \"Nice choice! This place looks amazing.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T19:15:00\"\n        },\n        {\n            \"body\": \"What do you feel like having?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T19:20:00\"\n        },\n        {\n            \"body\": \"I’m thinking of trying the pasta. What about you?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T19:25:00\"\n        },\n        {\n            \"body\": \"Pasta sounds good. I might go with the lasagna.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T19:30:00\"\n        },\n        {\n            \"body\": \"Lasagna is always a good choice.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T19:35:00\"\n        },\n        {\n            \"body\": \"By the way, how’s your family doing?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T19:40:00\"\n        },\n        {\n            \"body\": \"They’re doing well, thanks for asking! How about yours?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T19:45:00\"\n        },\n        {\n            \"body\": \"Everyone is good. My sister just got a new job.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T19:50:00\"\n        },\n        {\n            \"body\": \"Oh, that’s great news! What is she doing now?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T19:55:00\"\n        },\n        {\n            \"body\": \"She’s working as a graphic designer at a startup.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T20:00:00\"\n        },\n        {\n            \"body\": \"That sounds like a cool job! I’m sure she’ll do great.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T20:05:00\"\n        },\n        {\n            \"body\": \"I think so too. She’s really excited about it.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T20:10:00\"\n        },\n        {\n            \"body\": \"What did you think of the food?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T20:30:00\"\n        },\n        {\n            \"body\": \"It was delicious! We should come here again.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T20:35:00\"\n        },\n        {\n            \"body\": \"Absolutely! I had a great time tonight.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T20:40:00\"\n        },\n        {\n            \"body\": \"Me too. Let’s do this more often.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T20:45:00\"\n        },\n        {\n            \"body\": \"Definitely. Have a good night!\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-28T21:00:00\"\n        },\n        {\n            \"body\": \"Good night, Alice!\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-28T21:05:00\"\n        },\n        {\n            \"body\": \"Good morning! Did you sleep well?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-29T08:00:00\"\n        },\n        {\n            \"body\": \"Morning! Yes, I did. How about you?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-29T08:05:00\"\n        },\n        {\n            \"body\": \"I slept like a baby. Feeling refreshed!\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-29T08:10:00\"\n        },\n        {\n            \"body\": \"That’s good to hear. What’s your plan for today?\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-29T08:15:00\"\n        },\n        {\n            \"body\": \"I’m going to a yoga class in the morning, then probably just relax at home.\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-29T08:20:00\"\n        },\n        {\n            \"body\": \"Sounds like a relaxing day. Enjoy your yoga class!\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-29T08:25:00\"\n        },\n        {\n            \"body\": \"Thanks! What about you? Any plans?\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-29T08:30:00\"\n        },\n        {\n            \"body\": \"I’m meeting some friends for brunch, then maybe a movie in the afternoon.\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-29T08:35:00\"\n        },\n        {\n            \"body\": \"Sounds fun! Enjoy your day!\",\n            \"sender\": \"Alice\",\n            \"sentAt\": \"2024-06-29T08:40:00\"\n        },\n        {\n            \"body\": \"You too, Alice!\",\n            \"sender\": \"Bob\",\n            \"sentAt\": \"2024-06-29T08:45:00\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/v1/channels",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"channels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Message In Channel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"body\": \"Who is the preseident Indonesia?\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/api/v1/channels/520167476575600641/messages",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"channels",
+								"520167476575600641",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Message In Channel By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/api/v1/channels/520159024281288705/messages",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"channels",
+								"520159024281288705",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Whatsapp Parser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/ega/Downloads/_chat.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:9000/api/v1/files/sources/whatsapp",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"api",
+								"v1",
+								"files",
+								"sources",
+								"whatsapp"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/health",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
