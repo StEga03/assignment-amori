@@ -1,5 +1,5 @@
 ## Server
-export PORT_HTTP=
+export PORT_HTTP=9000
 export MACHINE_ID=
 
 ## Database

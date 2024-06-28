@@ -8,6 +8,7 @@ import (
 	"github.com/sashabaranov/go-openai"
 )
 
+//go:generate mockgen -package=channel -source=types.go -destination=channel_mock_test.go
 type consistencyResource interface {
 	RunAsUnit(ctx context.Context, action func(celTemp *consistency.ConsistencyElement) error) error
 }

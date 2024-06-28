@@ -28,7 +28,7 @@ func (r *Repository) GetByID(ctx context.Context, id uint64) (entity.Channel, er
 	return result, nil
 }
 
-func (r *Repository) GetByUserID(ctx context.Context, userId string) ([]entity.Channel, error) {
+func (r *Repository) GetByUserID(ctx context.Context, userId uint64) ([]entity.Channel, error) {
 	var (
 		result          []entity.Channel
 		resChannelTable []*channelTable

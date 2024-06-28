@@ -37,7 +37,7 @@ type MessageSource struct {
 }
 
 type MessageUCRequest struct {
-	ChannelID uint64 `json:"channelId" validate:"required"`
+	ChannelID uint64 `json:"channelId"`
 	Body      string `json:"body"`
 }
 
