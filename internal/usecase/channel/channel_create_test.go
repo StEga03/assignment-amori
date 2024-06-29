@@ -57,6 +57,7 @@ func TestUsecase_CreateChannel(t *testing.T) {
 				req: req,
 			},
 			mock: func() {
+				mockUserResource.EXPECT().GetUserByContext(gomock.Any()).Return(entity.User{}, nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(constant.DefaultUInt64, errors.New("error"))
 			},
 			want:    constant.DefaultUInt64,
@@ -69,6 +70,7 @@ func TestUsecase_CreateChannel(t *testing.T) {
 				req: req,
 			},
 			mock: func() {
+				mockUserResource.EXPECT().GetUserByContext(gomock.Any()).Return(entity.User{}, nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(123), nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(constant.DefaultUInt64, errors.New("error"))
 			},
@@ -82,6 +84,7 @@ func TestUsecase_CreateChannel(t *testing.T) {
 				req: req,
 			},
 			mock: func() {
+				mockUserResource.EXPECT().GetUserByContext(gomock.Any()).Return(entity.User{}, nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(123), nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(321), nil)
 				mockConsistencyResource.EXPECT().RunAsUnit(gomock.Any(), gomock.Any()).Return(errors.New("error"))
@@ -96,6 +99,7 @@ func TestUsecase_CreateChannel(t *testing.T) {
 				req: req,
 			},
 			mock: func() {
+				mockUserResource.EXPECT().GetUserByContext(gomock.Any()).Return(entity.User{}, nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(123), nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(321), nil)
 				mockConsistencyResource.EXPECT().RunAsUnit(gomock.Any(), gomock.Any()).DoAndReturn(testfiles.DoRunAsUnit)
@@ -111,6 +115,7 @@ func TestUsecase_CreateChannel(t *testing.T) {
 				req: req,
 			},
 			mock: func() {
+				mockUserResource.EXPECT().GetUserByContext(gomock.Any()).Return(entity.User{}, nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(123), nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(321), nil)
 				mockConsistencyResource.EXPECT().RunAsUnit(gomock.Any(), gomock.Any()).DoAndReturn(testfiles.DoRunAsUnit)
@@ -127,6 +132,7 @@ func TestUsecase_CreateChannel(t *testing.T) {
 				req: req,
 			},
 			mock: func() {
+				mockUserResource.EXPECT().GetUserByContext(gomock.Any()).Return(entity.User{}, nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(123), nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(321), nil)
 				mockConsistencyResource.EXPECT().RunAsUnit(gomock.Any(), gomock.Any()).DoAndReturn(testfiles.DoRunAsUnit)
@@ -144,6 +150,7 @@ func TestUsecase_CreateChannel(t *testing.T) {
 				req: req,
 			},
 			mock: func() {
+				mockUserResource.EXPECT().GetUserByContext(gomock.Any()).Return(entity.User{}, nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(123), nil)
 				mockSonyflakeResource.EXPECT().NextID().Return(uint64(321), nil)
 				mockConsistencyResource.EXPECT().RunAsUnit(gomock.Any(), gomock.Any()).DoAndReturn(testfiles.DoRunAsUnit)

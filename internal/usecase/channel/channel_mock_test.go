@@ -10,7 +10,7 @@ import (
 
 	entity "github.com/assignment-amori/internal/entity"
 	consistency "github.com/assignment-amori/pkg/consistency"
-	openai "github.com/sashabaranov/go-openai"
+	go_openai "github.com/sashabaranov/go-openai"
 	gomock "go.uber.org/mock/gomock"
 )
 
@@ -120,7 +120,7 @@ func (mr *MockchannelResourceMockRecorder) GetByIDAndUserID(ctx, id, userId inte
 }
 
 // GetByUserID mocks base method.
-func (m *MockchannelResource) GetByUserID(ctx context.Context, userId string) ([]entity.Channel, error) {
+func (m *MockchannelResource) GetByUserID(ctx context.Context, userId uint64) ([]entity.Channel, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetByUserID", ctx, userId)
 	ret0, _ := ret[0].([]entity.Channel)
@@ -329,10 +329,10 @@ func (m *MockopenaiResource) EXPECT() *MockopenaiResourceMockRecorder {
 }
 
 // CreateChatCompletion mocks base method.
-func (m *MockopenaiResource) CreateChatCompletion(ctx context.Context, param entity.ChatCompletionParams) (openai.ChatCompletionResponse, error) {
+func (m *MockopenaiResource) CreateChatCompletion(ctx context.Context, param entity.ChatCompletionParams) (go_openai.ChatCompletionResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CreateChatCompletion", ctx, param)
-	ret0, _ := ret[0].(openai.ChatCompletionResponse)
+	ret0, _ := ret[0].(go_openai.ChatCompletionResponse)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
@@ -366,19 +366,19 @@ func (m *MockuserResource) EXPECT() *MockuserResourceMockRecorder {
 	return m.recorder
 }
 
-// CreateMessage mocks base method.
-func (m *MockuserResource) CreateMessage(ctx context.Context, param entity.NewUserParams, cel *consistency.ConsistencyElement) (uint64, error) {
+// CreateUser mocks base method.
+func (m *MockuserResource) CreateUser(ctx context.Context, param entity.NewUserParams, cel *consistency.ConsistencyElement) (uint64, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateMessage", ctx, param, cel)
+	ret := m.ctrl.Call(m, "CreateUser", ctx, param, cel)
 	ret0, _ := ret[0].(uint64)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// CreateMessage indicates an expected call of CreateMessage.
-func (mr *MockuserResourceMockRecorder) CreateMessage(ctx, param, cel interface{}) *gomock.Call {
+// CreateUser indicates an expected call of CreateUser.
+func (mr *MockuserResourceMockRecorder) CreateUser(ctx, param, cel interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateMessage", reflect.TypeOf((*MockuserResource)(nil).CreateMessage), ctx, param, cel)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateUser", reflect.TypeOf((*MockuserResource)(nil).CreateUser), ctx, param, cel)
 }
 
 // GetByID mocks base method.
@@ -394,6 +394,21 @@ func (m *MockuserResource) GetByID(ctx context.Context, id uint64) (entity.User,
 func (mr *MockuserResourceMockRecorder) GetByID(ctx, id interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetByID", reflect.TypeOf((*MockuserResource)(nil).GetByID), ctx, id)
+}
+
+// GetUserByContext mocks base method.
+func (m *MockuserResource) GetUserByContext(ctx context.Context) (entity.User, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetUserByContext", ctx)
+	ret0, _ := ret[0].(entity.User)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetUserByContext indicates an expected call of GetUserByContext.
+func (mr *MockuserResourceMockRecorder) GetUserByContext(ctx interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetUserByContext", reflect.TypeOf((*MockuserResource)(nil).GetUserByContext), ctx)
 }
 
 // MocksonyFlakeResource is a mock of sonyFlakeResource interface.

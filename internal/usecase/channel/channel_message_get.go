@@ -3,6 +3,7 @@ package channel
 import (
 	"context"
 
+	"github.com/assignment-amori/internal/constant"
 	"github.com/assignment-amori/internal/entity"
 )
 
@@ -12,15 +13,20 @@ func (u *Usecase) GetMessageInChannel(ctx context.Context, req entity.MessageUCR
 		err    error
 	)
 
-	_, err = u.channelRepo.GetByIDAndUserID(ctx, req.ChannelID, 10)
+	user, err := u.userRepo.GetUserByContext(ctx)
+	if err != nil {
+		return result, err
+	}
+
+	_, err = u.channelRepo.GetByIDAndUserID(ctx, req.ChannelID, user.ID)
 	if err != nil {
 		return result, err
 	}
 
 	userMsgParam := entity.GetMessageParams{
 		ChannelID: req.ChannelID,
-		Limit:     10,
-		Offset:    0,
+		Limit:     constant.DefaultLimit,
+		Offset:    constant.DefaultOffset,
 	}
 	userMessages, err := u.messageRepo.GetMessageByChannelID(ctx, userMsgParam)
 
@@ -28,6 +34,7 @@ func (u *Usecase) GetMessageInChannel(ctx context.Context, req entity.MessageUCR
 		msgResp := entity.MessageResponse{
 			ID:        userMessage.ID,
 			ChannelID: userMessage.ChannelID,
+			Type:      userMessage.SenderType,
 			Body:      userMessage.Content,
 			Timestamp: userMessage.CreatedAt,
 		}

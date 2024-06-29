@@ -50,6 +50,7 @@ type MessageSourceUCRequest struct {
 type MessageResponse struct {
 	ID        uint64    `json:"id"`
 	ChannelID uint64    `json:"channelId"`
+	Type      string    `json:"type"`
 	Body      string    `json:"body"`
 	Timestamp time.Time `json:"timestamp"`
 }

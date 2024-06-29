@@ -11,7 +11,7 @@ import (
 	timeutils "github.com/assignment-amori/pkg/time_utils"
 )
 
-func (r *Repository) CreateMessage(ctx context.Context, param entity.NewUserParams, cel *consistency.ConsistencyElement) (uint64, error) {
+func (r *Repository) CreateUser(ctx context.Context, param entity.NewUserParams, cel *consistency.ConsistencyElement) (uint64, error) {
 	var (
 		userId uint64
 		tx     *pgx.Tx

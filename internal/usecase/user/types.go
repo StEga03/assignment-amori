@@ -8,7 +8,8 @@ import (
 
 type userResource interface {
 	GetByID(ctx context.Context, id uint64) (entity.User, error)
-	
+	GetUserByContext(ctx context.Context) (entity.User, error)
+
 	JWTGenerator(ctx context.Context, user entity.User) (string, error)
 }
 

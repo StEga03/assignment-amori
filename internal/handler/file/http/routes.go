@@ -13,6 +13,7 @@ func (u *Handler) Routes(hm helperModule) chi.Router {
 		constant.HTTPHandlerIDFilesMessageSource,
 		constant.HTTPDefaultResponseWriter,
 		u.UploadMessageSource,
+		hm.GetJWTAuthMiddleware(),
 	))
 
 	return r

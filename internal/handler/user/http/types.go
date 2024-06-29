@@ -10,11 +10,9 @@ import (
 	mwHTTP "github.com/assignment-amori/middleware/http"
 )
 
-//go:generate mockgen -package=http -source=types.go -destination=channel_http_mock_test.go
-type ChannelUsecase interface {
-	CreateChannel(ctx context.Context, req entity.NewChannelUCRequest) (uint64, error)
-	CreateMessageInChannel(ctx context.Context, req entity.MessageUCRequest) (entity.MessageResponse, error)
-	GetMessageInChannel(ctx context.Context, req entity.MessageUCRequest) ([]entity.MessageResponse, error)
+type UserUsecase interface {
+	GenerateValidJWT(ctx context.Context, userId uint64) (string, error)
+	GetCurrentUser(ctx context.Context) (entity.User, error)
 }
 
 type helperModule interface {
@@ -24,5 +22,5 @@ type helperModule interface {
 }
 
 type Handler struct {
-	ChannelUC ChannelUsecase
+	UserUC UserUsecase
 }

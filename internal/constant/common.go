@@ -73,3 +73,7 @@ const (
 	// SessionTTL defines the time-to-live for user sessions.
 	SessionTTL = 24 * time.Hour
 )
+
+const (
+	ContentTypeText = "text"
+)

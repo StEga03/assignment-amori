@@ -13,18 +13,21 @@ func (u *Handler) Routes(hm helperModule) chi.Router {
 		constant.HTTPHandlerIDChannelCreate,
 		constant.HTTPDefaultResponseWriter,
 		u.CreateChannel,
+		hm.GetJWTAuthMiddleware(),
 	))
 
 	r.Post("/{channelId}/messages", hm.HandleHTTP(
 		constant.HTTPHandlerIDChannelMessageCreate,
 		constant.HTTPDefaultResponseWriter,
 		u.CreateMessageInChannel,
+		hm.GetJWTAuthMiddleware(),
 	))
 
 	r.Get("/{channelId}/messages", hm.HandleHTTP(
 		constant.HTTPHandlerIDChannelMessageGet,
 		constant.HTTPDefaultResponseWriter,
 		u.GetMessageInChannelByID,
+		hm.GetJWTAuthMiddleware(),
 	))
 
 	return r

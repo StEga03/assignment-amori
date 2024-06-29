@@ -13,6 +13,7 @@ import (
 	"github.com/assignment-amori/internal/entity"
 	channelHdlr "github.com/assignment-amori/internal/handler/channel/http"
 	fileHdlr "github.com/assignment-amori/internal/handler/file/http"
+	userHdlr "github.com/assignment-amori/internal/handler/user/http"
 	channelRepository "github.com/assignment-amori/internal/repository/channel"
 	messageRepository "github.com/assignment-amori/internal/repository/message"
 	openaiRepository "github.com/assignment-amori/internal/repository/openai"
@@ -20,6 +21,7 @@ import (
 	openaiService "github.com/assignment-amori/internal/service/openai"
 	channelUsecase "github.com/assignment-amori/internal/usecase/channel"
 	fileUsecase "github.com/assignment-amori/internal/usecase/file"
+	userUsecase "github.com/assignment-amori/internal/usecase/user"
 	handhelp "github.com/assignment-amori/middleware/http"
 	"github.com/assignment-amori/pkg/consistency/enforcer"
 	"github.com/assignment-amori/pkg/errorwrapper"
@@ -107,6 +109,9 @@ func startApp(ctx context.Context, genericMod *helper.GenericModulesResult) erro
 	// File UC.
 	fileUC := fileUsecase.New()
 
+	// User UC.
+	userUC := userUsecase.New(userRepo)
+
 	//------------------------------------------------------
 	slog.Info("Start Initializing Handler")
 	//------------------------------------------------------
@@ -117,11 +122,15 @@ func startApp(ctx context.Context, genericMod *helper.GenericModulesResult) erro
 	// Upload Handler.
 	uploadHandler := fileHdlr.New(fileUC)
 
+	// User Handler.
+	userHandler := userHdlr.New(userUC)
+
 	slog.Info("Creating endpoint route")
 	router := newRoutes(
 		genericMod.AppConfig,
 		channelHandler,
 		uploadHandler,
+		userHandler,
 	)
 
 	slog.Info("Application Start")
@@ -132,6 +141,7 @@ func newRoutes(
 	appConfig entity.AppConfig,
 	channelHandler *channelHdlr.Handler,
 	fileHandler *fileHdlr.Handler,
+	userHandler *userHdlr.Handler,
 ) *chi.Mux {
 	router := chi.NewRouter()
 	helperModule := handhelp.New(
@@ -163,6 +173,7 @@ func newRoutes(
 			r.Group(func(r chi.Router) {
 				r.Mount(helper.GenModulePattern(constant.ModuleChannels), channelHandler.Routes(helperModule))
 				r.Mount(helper.GenModulePattern(constant.ModuleFiles), fileHandler.Routes(helperModule))
+				r.Mount(helper.GenModulePattern(constant.ModuleUsers), userHandler.Routes(helperModule))
 			})
 		})
 	})
