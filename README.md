@@ -45,7 +45,7 @@ This project is a RESTful API service written in Golang designed to manage produ
 
 ## Database Schema
 
-There are two tables:
+There are 5 tables:
 
 1. **Users**: `(id, first_name, last_name, birth_date, gender, gender_interest, phone_number, relationship_status, relationship_goal)`, with indexing on `phone_number`.
 2. **Channels**: `(id, user_id, name)`, with indexing on `user_id`.
