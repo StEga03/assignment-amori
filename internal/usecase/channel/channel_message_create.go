@@ -2,7 +2,9 @@ package channel
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/assignment-amori/internal/constant"
 	"github.com/assignment-amori/internal/entity"
 	"github.com/assignment-amori/internal/entity/generic"
 	"github.com/assignment-amori/pkg/errorwrapper"
@@ -16,7 +18,12 @@ func (u *Usecase) CreateMessageInChannel(ctx context.Context, req entity.Message
 		err    error
 	)
 
-	_, err = u.channelRepo.GetByIDAndUserID(ctx, req.ChannelID, 10)
+	user, err := u.userRepo.GetUserByContext(ctx)
+	if err != nil {
+		return result, err
+	}
+
+	_, err = u.channelRepo.GetByIDAndUserID(ctx, req.ChannelID, user.ID)
 	if err != nil {
 		return result, err
 	}
@@ -30,9 +37,9 @@ func (u *Usecase) CreateMessageInChannel(ctx context.Context, req entity.Message
 	newMessage := entity.NewMessageParams{
 		ID:          messageId,
 		ChannelID:   req.ChannelID,
-		SenderType:  "user",
-		SenderID:    10,
-		ContentType: "text",
+		SenderType:  openai.ChatMessageRoleUser,
+		SenderID:    user.ID,
+		ContentType: constant.ContentTypeText,
 		Content:     req.Body,
 		MetaInfo: generic.MetaInfo{
 			CreatedAt: now,
@@ -47,18 +54,56 @@ func (u *Usecase) CreateMessageInChannel(ctx context.Context, req entity.Message
 	result = entity.MessageResponse{
 		ID:        messageId,
 		ChannelID: req.ChannelID,
+		Type:      openai.ChatMessageRoleUser,
 		Body:      req.Body,
 		Timestamp: now,
 	}
 
+	err = u.getAIResponse(ctx, req)
+	if err != nil {
+		return result, err
+	}
+
+	return result, nil
+}
+
+func (u *Usecase) getAIResponse(ctx context.Context, req entity.MessageUCRequest) error {
 	userMsgParam := entity.GetMessageParams{
 		ChannelID: req.ChannelID,
-		Limit:     10,
-		Offset:    0,
+		Limit:     constant.DefaultLimit,
+		Offset:    constant.DefaultOffset,
+	}
+	messageInput, err := u.messageRepo.GetMessageInputByChannelID(ctx, userMsgParam)
+	if err != nil {
+		return err
+	}
+
+	userMsgSourceParam := entity.GetMessageSourceParams{
+		MessageInputID: messageInput[0].ID,
+		Limit:          50,
+		Offset:         0,
+	}
+	messageSources, err := u.messageRepo.GetMessageSourceByMessageInputID(ctx, userMsgSourceParam)
+	if err != nil {
+		return err
+	}
+
+	var messages []openai.ChatCompletionMessage
+	for i := len(messageSources) - 1; i >= 0; i-- {
+		message := openai.ChatCompletionMessage{
+			Role:    openai.ChatMessageRoleUser,
+			Content: fmt.Sprintf("[%s] %s: %s", messageSources[i].SentAt, messageSources[i].Sender, messageSources[i].Content),
+		}
+		messages = append(messages, message)
+	}
+
+	userMsgParam = entity.GetMessageParams{
+		ChannelID: req.ChannelID,
+		Limit:     constant.DefaultLimit,
+		Offset:    constant.DefaultOffset,
 	}
 	userMessages, err := u.messageRepo.GetMessageByChannelID(ctx, userMsgParam)
 
-	var messages []openai.ChatCompletionMessage
 	for i := len(userMessages) - 1; i >= 0; i-- {
 		message := openai.ChatCompletionMessage{
 			Role:    userMessages[i].SenderType,
@@ -67,33 +112,32 @@ func (u *Usecase) CreateMessageInChannel(ctx context.Context, req entity.Message
 		messages = append(messages, message)
 	}
 
-	messages = []openai.ChatCompletionMessage{
-		{
-			Role:    openai.ChatMessageRoleUser,
-			Content: req.Body,
-		},
+	message := openai.ChatCompletionMessage{
+		Role:    openai.ChatMessageRoleAssistant,
+		Content: constant.MessageContextPrompt,
 	}
-
+	messages = append(messages, message)
+	
 	param := entity.ChatCompletionParams{
 		Messages: messages,
 	}
 	response, err := u.openaiRepo.CreateChatCompletion(ctx, param)
 	if err != nil {
-		return result, err
+		return err
 	}
 
-	messageId, err = u.sf.NextID()
+	messageId, err := u.sf.NextID()
 	if err != nil {
-		return result, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
+		return errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
 	}
 
-	now = timeutils.Now()
+	now := timeutils.Now()
 	responseParam := entity.NewMessageParams{
 		ID:          messageId,
 		ChannelID:   req.ChannelID,
-		SenderType:  "assistant",
-		SenderID:    1,
-		ContentType: "text",
+		SenderType:  openai.ChatMessageRoleAssistant,
+		SenderID:    1, // Hardcoded Assistant's UserID.
+		ContentType: constant.ContentTypeText,
 		Content:     response.Choices[0].Message.Content,
 		MetaInfo: generic.MetaInfo{
 			CreatedAt: now,
@@ -102,8 +146,8 @@ func (u *Usecase) CreateMessageInChannel(ctx context.Context, req entity.Message
 	}
 	_, err = u.messageRepo.CreateMessage(ctx, responseParam, nil)
 	if err != nil {
-		return result, err
+		return err
 	}
 
-	return result, nil
+	return nil
 }

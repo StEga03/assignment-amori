@@ -16,7 +16,7 @@ type consistencyResource interface {
 type channelResource interface {
 	CreateChannel(ctx context.Context, param entity.NewChannelParams, cel *consistency.ConsistencyElement) (uint64, error)
 	GetByID(ctx context.Context, id uint64) (entity.Channel, error)
-	GetByUserID(ctx context.Context, userId string) ([]entity.Channel, error)
+	GetByUserID(ctx context.Context, userId uint64) ([]entity.Channel, error)
 	GetByIDAndUserID(ctx context.Context, id, userId uint64) (entity.Channel, error)
 }
 
@@ -43,8 +43,9 @@ type openaiResource interface {
 }
 
 type userResource interface {
-	CreateMessage(ctx context.Context, param entity.NewUserParams, cel *consistency.ConsistencyElement) (uint64, error)
+	CreateUser(ctx context.Context, param entity.NewUserParams, cel *consistency.ConsistencyElement) (uint64, error)
 	GetByID(ctx context.Context, id uint64) (entity.User, error)
+	GetUserByContext(ctx context.Context) (entity.User, error)
 }
 
 type sonyFlakeResource interface {

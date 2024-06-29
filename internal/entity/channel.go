@@ -10,8 +10,12 @@ type Channel struct {
 }
 
 type NewChannelUCRequest struct {
-	Name          string                   `json:"name"`
-	MessageSource []MessageSourceUCRequest `json:"messageSource"`
+	Name            string                   `json:"name"`
+	Source          string                   `json:"source"`
+	Sender          string                   `json:"sender"`
+	Receiver        string                   `json:"receiver"`
+	ReceiverPronoun string                   `json:"receiverPronoun"`
+	MessageSource   []MessageSourceUCRequest `json:"messageSource"`
 }
 
 type NewChannelParams struct {

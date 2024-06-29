@@ -14,13 +14,17 @@ const (
 	HTTPHandlerIDAuthCodeVerify HandlerID = "auth-code-verify"
 	HTTPHandlerIDTokenRefresh   HandlerID = "auth-token-refresh"
 
-	// Users HandlerID.
+	// Channels HandlerID.
 	HTTPHandlerIDChannelCreate        HandlerID = "channel-create"
 	HTTPHandlerIDChannelMessageCreate HandlerID = "channel-message-create"
 	HTTPHandlerIDChannelMessageGet    HandlerID = "channel-message-get"
 
 	// Files HandlerID.
 	HTTPHandlerIDFilesMessageSource HandlerID = "file-source"
+
+	// Users HandlerID.
+	HTTPHandlerIDUserTokenGeneratorGet HandlerID = "user-token-generator-get"
+	HTTPHandlerIDUserCurrentGet        HandlerID = "user-current-get"
 )
 
 // HTTP Header.

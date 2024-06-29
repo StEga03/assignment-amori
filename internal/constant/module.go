@@ -5,4 +5,5 @@ type Module string
 const (
 	ModuleChannels Module = "channels"
 	ModuleFiles    Module = "files"
+	ModuleUsers    Module = "users"
 )

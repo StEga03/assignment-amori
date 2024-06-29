@@ -40,7 +40,7 @@ This project is a RESTful API service written in Golang designed to manage produ
 1. Create a database called `assignment-amori` on PostgreSQL.
 2. Set up PostgreSQL connection credentials to `postgres` as both the username and password.
 3. Make sure you're already set the `.envrc` with your database configuration and the other variable.
-4. Execute the command: `make run-http`.
+4. Execute the command: `make run`.
 5. You're done!
 
 ## Database Schema
@@ -63,6 +63,10 @@ There are two tables:
       ```json
       {
           "name": "Channel Name",
+          "source": "whatsapp",
+          "sender": "Alice",
+          "receiver": "Bob",
+          "receiverPronoun": "Him",
           "messageSource": [
              {
                   "body": "Hey, how was your day?",
@@ -93,7 +97,7 @@ There are two tables:
    - Request Body:
      ```json
      {
-         "body": "How are you?"
+         "body": "How can I improve my communication?"
      }
      ```
    - Response: Returns the created message with its ID.
@@ -105,7 +109,7 @@ There are two tables:
         "data": {
            "id": 520167486910365697,
            "channelId": 520167476575600641,
-           "body": "How are you?",
+           "body": "How can I improve my communication?",
            "timestamp": "2024-06-28T18:19:42.810561+07:00"
         }
      }
@@ -124,13 +128,15 @@ There are two tables:
             {
                "id": 520159085702676481,
                "channelId": 520159024281288705,
-               "body": "I'm just a computer program, so I don't have feelings, but thanks for asking! How can I assist you today?",
+               "type": "assistant",
+               "body": "Alright, listen up! First off, please for the love of cupcakes, ditch the generic questions like \"How was your day?\" and get creative. Ask something fun or quirky! Secondly, pepper in some compliments or show genuine interest in their responses. Third, listen more than you talk, but when you do talk, make it count! Basically, don’t be boring and make sure they know you care.",
                "timestamp": "2024-06-28T09:56:15.303344Z"
             },
             {
                "id": 520159082733109249,
                "channelId": 520159024281288705,
-               "body": "How are you?",
+               "type": "user",
+               "body": "How can I improve my communication?",
                "timestamp": "2024-06-28T09:56:13.533594Z"
             }
          ]
@@ -140,6 +146,7 @@ There are two tables:
 4. **File Parser:** `POST /files/sources/:platformType`
     - Form Data:
       - `file` -> File to be uploaded.
+      - `platformType` -> Source type e.g whatsapp, imessage.
     - Response:
       ```json
       {
@@ -162,6 +169,43 @@ There are two tables:
          ]
       }
       ```
+
+5. **(Bypass) Token Generator:** `GET /users/:userId/token/generator`
+   - Form Data:
+      - `userId` -> User ID.
+   - Response:
+     ```json
+     {
+        "code": 200,
+        "message": "Your request processed successfully.",
+        "retryable": false,
+        "data": "<bearer_token>"
+     }
+     ```
+6. **Get Current User:** `GET /users/:userId/current`
+   - Form Data:
+      - `userId` -> User ID.
+   - Response:
+     ```json
+     {
+        "code": 200,
+        "message": "Your request processed successfully.",
+        "retryable": false,
+        "data": {
+           "id": 10,
+           "firstName": "Alice",
+           "lastName": "Taylor",
+           "birthDate": "2000-12-01T00:00:00Z",
+           "gender": "female",
+           "genderInterest": "male",
+           "phoneNumber": "+6281111111111",
+           "relationshipStatus": "single",
+           "relationshipGoal": "marriage",
+           "createdAt": "2024-06-28T17:12:30.151598+07:00",
+           "updatedAt": "2024-06-28T17:12:30.151598+07:00"
+        }
+     }
+     ```
 
 
 ## Libraries Used
@@ -196,3 +240,5 @@ Find all the documentation in the `/docs` directory.
 ## Optimization Considerations
 
 - Optimizations include implementing caching strategies to reduce database load, optimizing database queries to improve response times, and considering horizontal scaling to accommodate growth in user traffic and data volume.
+- Utilizing Message Queues (MQ) can significantly enhance the efficiency of REST APIs by supporting an optimistic approach, eliminating the need to wait for a response from OpenAI.
+- Improved prompting templates to enhance responses using conversation history.

@@ -19,6 +19,7 @@ type FileUC interface {
 type helperModule interface {
 	HandleHTTP(handlerName constant.HandlerID, typ constant.MiddlewareID, h generic.HTTPHandleFunc, mw ...mwHTTP.MiddlewareExecutor) generic.HTTPHandler
 	APIModule(module constant.Module) func(next http.Handler) http.Handler
+	GetJWTAuthMiddleware() *mwHTTP.JWTMiddleware
 }
 
 type Handler struct {

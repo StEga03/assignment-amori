@@ -16,6 +16,11 @@ func (u *Usecase) CreateChannel(ctx context.Context, req entity.NewChannelUCRequ
 		err    error
 	)
 
+	user, err := u.userRepo.GetUserByContext(ctx)
+	if err != nil {
+		return result, err
+	}
+
 	channelId, err := u.sf.NextID()
 	if err != nil {
 		return result, errorwrapper.Wrap(err, errorwrapper.ErrIDFailedToGenerateID)
@@ -28,17 +33,17 @@ func (u *Usecase) CreateChannel(ctx context.Context, req entity.NewChannelUCRequ
 
 	newChannel := entity.NewChannelParams{
 		ID:     channelId,
-		UserID: 10,
+		UserID: user.ID,
 		Name:   req.Name,
 	}
 
 	newMessageInput := entity.NewMessageInputParams{
 		ID:              messageInputId,
 		ChannelID:       channelId,
-		Source:          "whatsapp",
-		Sender:          "Alice",
-		Receiver:        "Bob",
-		ReceiverPronoun: "Him",
+		Source:          req.Source,
+		Sender:          req.Sender,
+		Receiver:        req.Receiver,
+		ReceiverPronoun: req.ReceiverPronoun,
 	}
 
 	var newMessageSources []entity.NewMessageSourceParams
@@ -51,7 +56,7 @@ func (u *Usecase) CreateChannel(ctx context.Context, req entity.NewChannelUCRequ
 		newMessageSource := entity.NewMessageSourceParams{
 			MessageInputID: messageInputId,
 			Sender:         msgSource.Sender,
-			ContentType:    "text",
+			ContentType:    constant.ContentTypeText,
 			Content:        msgSource.Body,
 			SentAt:         sentAt,
 		}

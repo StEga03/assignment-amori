@@ -13,4 +13,5 @@ const (
 	ContextKeyUserID             ContextKey = "context-user-id"
 	ContextKeyUserScope          ContextKey = "context-user-scope"
 	ContextKeyIdentityProviderID ContextKey = "identity-provider-id"
+	ContextUser                             = "context_user"
 )

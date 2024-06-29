@@ -1,0 +1,50 @@
+[28/06/24 08:00:00] Alice: Hey, how was your day?
+[28/06/24 08:05:00] Bob: It was good, thanks for asking! How about yours?
+[28/06/24 08:10:00] Alice: Mine was a bit hectic, had lots of meetings.
+[28/06/24 08:15:00] Bob: That sounds exhausting. Did you get some time to relax?
+[28/06/24 08:20:00] Alice: Yeah, I did some yoga in the evening. It helped a lot.
+[28/06/24 08:25:00] Bob: Yoga sounds nice. I should try it sometime.
+[28/06/24 08:30:00] Alice: You definitely should! It’s very relaxing.
+[28/06/24 08:35:00] Bob: What poses do you recommend for beginners?
+[28/06/24 08:40:00] Alice: Start with some basic poses like Child's Pose and Downward Dog.
+[28/06/24 08:45:00] Bob: Thanks for the tips! By the way, did you get a chance to look at the project proposal?
+[28/06/24 08:50:00] Alice: Yes, I did. I think it looks great, but we might need to adjust the budget a bit.
+[28/06/24 08:55:00] Bob: I was thinking the same. We can discuss it more in the meeting tomorrow.
+[28/06/24 09:00:00] Alice: Sure, let’s finalize it then.
+[28/06/24 09:05:00] Bob: Perfect. Are you free tonight? Maybe we can grab dinner.
+[28/06/24 09:10:00] Alice: I’d love to! Where should we go?
+[28/06/24 09:15:00] Bob: How about that new Italian place downtown?
+[28/06/24 09:20:00] Alice: Sounds good! I’ll see you at 7?
+[28/06/24 09:25:00] Bob: 7 it is. Looking forward to it!
+[28/06/24 18:45:00] Alice: Hey, are you on your way?
+[28/06/24 18:50:00] Bob: Yes, just left the house. See you in 15 minutes!
+[28/06/24 18:55:00] Alice: Great, I’m almost there too.
+[28/06/24 19:10:00] Bob: I got us a table near the window. Perfect view!
+[28/06/24 19:15:00] Alice: Nice choice! This place looks amazing.
+[28/06/24 19:20:00] Bob: What do you feel like having?
+[28/06/24 19:25:00] Alice: I’m thinking of trying the pasta. What about you?
+[28/06/24 19:30:00] Bob: Pasta sounds good. I might go with the lasagna.
+[28/06/24 19:35:00] Alice: Lasagna is always a good choice.
+[28/06/24 19:40:00] Bob: By the way, how’s your family doing?
+[28/06/24 19:45:00] Alice: They’re doing well, thanks for asking! How about yours?
+[28/06/24 19:50:00] Bob: Everyone is good. My sister just got a new job.
+[28/06/24 19:55:00] Alice: Oh, that’s great news! What is she doing now?
+[28/06/24 20:00:00] Bob: She’s working as a graphic designer at a startup.
+[28/06/24 20:05:00] Alice: That sounds like a cool job! I’m sure she’ll do great.
+[28/06/24 20:10:00] Bob: I think so too. She’s really excited about it.
+[28/06/24 20:30:00] Alice: What did you think of the food?
+[28/06/24 20:35:00] Bob: It was delicious! We should come here again.
+[28/06/24 20:40:00] Alice: Absolutely! I had a great time tonight.
+[28/06/24 20:45:00] Bob: Me too. Let’s do this more often.
+[28/06/24 21:00:00] Alice: Definitely. Have a good night!
+[28/06/24 21:05:00] Bob: Good night, Alice!
+[29/06/24 08:00:00] Alice: Good morning! Did you sleep well?
+[29/06/24 08:05:00] Bob: Morning! Yes, I did. How about you?
+[29/06/24 08:10:00] Alice: I slept like a baby. Feeling refreshed!
+[29/06/24 08:15:00] Bob: That’s good to hear. What’s your plan for today?
+[29/06/24 08:20:00] Alice: I’m going to a yoga class in the morning, then probably just relax at home.
+[29/06/24 08:25:00] Bob: Sounds like a relaxing day. Enjoy your yoga class!
+[29/06/24 08:30:00] Alice: Thanks! What about you? Any plans?
+[29/06/24 08:35:00] Bob: I’m meeting some friends for brunch, then maybe a movie in the afternoon.
+[29/06/24 08:40:00] Alice: Sounds fun! Enjoy your day!
+[29/06/24 08:45:00] Bob: You too, Alice!
